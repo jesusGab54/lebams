@@ -1,0 +1,703 @@
+/* ==========================================================================
+   LEBAMS · hoja de estilos principal (tipografía + base + layout compartido)
+   Orden: @font-face → tokens → reset → utilidades → animaciones → cabecera,
+   navegación, pie de página y botones flotantes.
+   Los estilos exclusivos de cada página están en home.css y contact.css.
+   ========================================================================== */
+
+/* ---------- 1. Tipografía autoalojada ------------------------------------- */
+/* Montserrat (fuente variable: un solo archivo cubre de 100 a 900) */
+@font-face {
+	font-family: "Montserrat";
+	src: url("../fonts/Montserrat-VariableFont_wght.ttf") format("truetype-variations"),
+	     url("../fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Fraunces */
+@font-face {
+	font-family: "Fraunces";
+	src: url("../fonts/Fraunces_72pt-SemiBold.ttf") format("truetype");
+	font-weight: 500 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Fraunces";
+	src: url("../fonts/Fraunces_72pt-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ---------- 2. Base, tokens y utilidades ---------------------------------- */
+:root {
+	/* Colores (paleta original conservada) */
+	--main-color: #ffffff;
+	--bg-color: #ecf0f1;
+	--text-color: #2c3e50;
+	--details-color: #f5e8c7;
+	--accent-color: #bd9b60;
+	--accent-dark: #7a5c22;   /* acento con contraste AA sobre fondos claros */
+	--danger-color: #e74c3c;
+	--danger-dark: #b83227;   /* rojo con contraste AA para texto pequeño */
+	--focus-color: #e0b35a;
+
+	/* Tipografía fluida */
+	--font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+	--font-sz-xs: .75rem;
+	--font-sz-s: .875rem;
+	--font-sz-m: 1rem;
+	--font-sz-l: 1.25rem;
+	--font-sz-xl: 1.5rem;
+	--font-sz-xxl: clamp(1.6rem, 1.2rem + 1.6vw, 2rem);
+	--font-sz-xxxl: clamp(2rem, 1.2rem + 3.6vw, 3.5rem);
+
+	--font-light: 300;
+	--font-regular: 400;
+	--font-medium: 500;
+	--font-semibold: 600;
+	--font-bold: 700;
+
+	/* Espaciado, radios, sombras, easing */
+	--space-section: clamp(3rem, 2rem + 4vw, 6rem);
+	--container: 1200px;
+	--gutter: clamp(1rem, .5rem + 2.5vw, 2rem);
+	--radius: .75rem;
+	--shadow-soft: 0 .25rem 1.5rem rgba(44, 62, 80, .18);
+	--shadow-strong: 0 .5rem 2rem rgba(44, 62, 80, .35);
+	--ease: cubic-bezier(.445, .05, .55, .95);
+	--ease-out: cubic-bezier(.175, .885, .32, 1.275);
+	/* Salida muy suave: sin arranques ni frenazos, para entradas elegantes */
+	--ease-soft: cubic-bezier(.22, .61, .36, 1);
+
+	/* Duraciones unificadas (hovers pausados, no instantáneos) */
+	--dur-fast: .35s;
+	--dur-mid: .45s;
+	--dur-slow: .55s;
+	--header-h: 80px;
+}
+
+/* Reset moderno */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--header-h) + 1rem);
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+body {
+	min-height: 100vh;
+	min-height: 100dvh;
+	font-family: var(--font-sans);
+	font-size: var(--font-sz-m);
+	line-height: 1.6;
+	color: var(--text-color);
+	background-color: var(--bg-color);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+body.menu-open {
+	overflow: hidden;
+}
+
+img, svg, picture, iframe {
+	display: block;
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+button, input, textarea, select {
+	font: inherit;
+	color: inherit;
+	border: none;
+}
+
+button {
+	cursor: pointer;
+	background: none;
+}
+
+h1, h2, h3, h4 {
+	line-height: 1.2;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+/* Accesibilidad: foco visible y consistente */
+:focus-visible {
+	outline: 3px solid var(--focus-color);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+::selection {
+	background: var(--accent-color);
+	color: var(--text-color);
+}
+
+/* Enlace "saltar al contenido" */
+.skip-link {
+	position: fixed;
+	top: .5rem;
+	left: .5rem;
+	z-index: 3000;
+	padding: .75rem 1.25rem;
+	font-weight: var(--font-semibold);
+	color: var(--text-color);
+	background: var(--details-color);
+	border-radius: var(--radius);
+	transform: translateY(-200%);
+	transition: transform .3s var(--ease);
+}
+.skip-link:focus {
+	transform: translateY(0);
+}
+
+/* Solo para lectores de pantalla */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Hoja de iconos SVG en línea (oculta) */
+.sprite {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.noscript-note {
+	position: fixed;
+	inset: auto 0 0 0;
+	z-index: 2000;
+	padding: .5rem;
+	text-align: center;
+	color: var(--text-color);
+	background: var(--details-color);
+}
+
+.container {
+	width: min(100% - 2 * var(--gutter), var(--container));
+	margin-inline: auto;
+}
+
+/* Título de sección (estilo original: rojo, mayúsculas, sombra) */
+.subtitle {
+	color: var(--danger-color);
+	font-size: var(--font-sz-xxl);
+	font-weight: var(--font-bold);
+	text-transform: uppercase;
+	word-spacing: .5rem;
+	text-align: center;
+	text-shadow: 1.2px 1px 1px var(--text-color);
+	margin-bottom: 2rem;
+}
+
+.section-lead {
+	max-width: 70ch;
+	margin: 0 auto 1rem;
+	text-align: center;
+	line-height: 1.6;
+}
+
+/* Botones ---------------------------------------------------------------- */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .5rem;
+	min-height: 48px;
+	padding: .9rem 2rem;
+	font-size: var(--font-sz-s);
+	font-weight: var(--font-semibold);
+	text-align: center;
+	color: var(--details-color);
+	background-color: var(--text-color);
+	border: 2px solid var(--text-color);
+	border-radius: 2rem;
+	cursor: pointer;
+	transition: transform var(--dur-mid) var(--ease-soft),
+	            background-color var(--dur-mid) ease,
+	            color var(--dur-mid) ease,
+	            box-shadow var(--dur-mid) ease,
+	            border-color var(--dur-mid) ease;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+}
+
+.btn:active {
+	transform: translateY(0);
+}
+
+.btn--light {
+	color: var(--details-color);
+	background-color: var(--text-color);
+	border-color: var(--text-color);
+}
+.btn--light:hover {
+	color: var(--bg-color);
+	background-color: transparent;
+	border-color: var(--bg-color);
+	box-shadow: 0 0 3rem rgba(245, 232, 199, .5);
+}
+
+.btn--outline {
+	color: var(--text-color);
+	background-color: transparent;
+	border-radius: 10px;
+}
+.btn--outline:hover {
+	color: var(--accent-dark);
+	border-color: var(--accent-color);
+	box-shadow: 0 0 2rem rgba(189, 155, 96, .45);
+}
+
+.btn--accent {
+	color: var(--text-color);
+	background-color: var(--accent-color);
+	border-color: var(--accent-color);
+	border-radius: 1rem;
+	font-size: var(--font-sz-m);
+}
+.btn--accent:hover {
+	color: var(--bg-color);
+	background-color: transparent;
+	border-color: var(--bg-color);
+	box-shadow: 0 0 3rem rgba(245, 232, 199, .3);
+}
+
+.btn[disabled],
+.btn[aria-busy="true"] {
+	opacity: .65;
+	pointer-events: none;
+}
+
+.icon {
+	width: 1.25em;
+	height: 1.25em;
+	fill: currentColor;
+	flex: none;
+}
+
+/* Aparición al hacer scroll: recorrido corto, desenfoque ligero y salida suave.
+   El JS solo marca lo que está fuera de pantalla, así que nunca hay parpadeos. */
+.reveal {
+	opacity: 0;
+	transform: translateY(22px);
+	filter: blur(6px);
+	transition: opacity .65s var(--ease-soft),
+	            transform .72s var(--ease-soft),
+	            filter .55s var(--ease-soft);
+	transition-delay: var(--delay, 0ms);
+}
+
+.reveal.is-visible {
+	opacity: 1;
+	transform: none;
+	filter: none;
+}
+
+/* Entrada suave reutilizable (hero, formulario de contacto) */
+@keyframes soft-in {
+	from { opacity: 0; transform: translateY(12px); filter: blur(5px); }
+	to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* Respeto a usuarios con movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	*, *::before, *::after {
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .01ms !important;
+		transition-delay: 0ms !important;
+	}
+	.reveal { opacity: 1; transform: none; }
+}
+
+/* Impresión */
+@media print {
+	.header, .floating-actions, .hero__scroll { display: none !important; }
+	body { background: #fff; }
+}
+
+/* ---------- 3. Cabecera, navegación, pie y acciones flotantes ------------- */
+/* HEADER ------------------------------------------------------------------ */
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	min-height: var(--header-h);
+	padding: .75rem clamp(1rem, 4vw, 2rem);
+	background-color: var(--text-color);
+	border-bottom: 1px solid rgba(236, 240, 241, .1);
+	transition: box-shadow .4s var(--ease), background-color .4s var(--ease);
+}
+
+.header.is-scrolled {
+	box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .3);
+	background-color: rgba(44, 62, 80, .96);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+	.header.is-scrolled {
+		background-color: rgba(44, 62, 80, .88);
+		backdrop-filter: blur(10px);
+	}
+}
+
+.logo {
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-xxl);
+	font-weight: var(--font-semibold);
+	line-height: 1.1;
+	color: var(--details-color);
+	border-bottom: 3px solid var(--accent-color);
+	transition: .4s cubic-bezier(.445, .05, .55, .95);
+}
+.logo:hover {
+	color: var(--bg-color);
+	border-bottom-color: var(--bg-color);
+	transform: translateY(-10px);
+}
+
+/* En escritorio el panel "desaparece" y el nav queda como hijo del header */
+.header__panel {
+	display: contents;
+}
+
+.navbar-list {
+	display: flex;
+	align-items: center;
+	gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Menú: la barra inferior es el indicador de sección (dorada). El hover se
+   queda solo con el gesto original: el enlace se enciende y sube 3 px. */
+.navbar-link {
+	position: relative;
+	font-size: var(--font-sz-m);
+	font-weight: var(--font-semibold);
+	text-transform: uppercase;
+	color: var(--details-color);
+	opacity: .3;
+	transition: .4s cubic-bezier(.445, .05, .55, .95);
+}
+
+.navbar-link::before {
+	content: "";
+	position: absolute;
+	bottom: -6px;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background-color: var(--accent-color);
+	transform: scale(0);
+	transform-origin: center;
+	transition: transform .45s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.navbar-link:hover {
+	color: var(--bg-color);
+	opacity: 1;
+	transform: translateY(-3px);
+}
+
+/* Sección visible: barra dorada fija, sin movimiento ni subrayado doble */
+.navbar-link[aria-current] {
+	color: var(--details-color);
+	opacity: 1;
+}
+
+.navbar-link[aria-current]::before {
+	transform: scale(1);
+}
+
+/* Botón hamburguesa (solo móvil) */
+.nav-toggle {
+	display: none;
+	position: relative;
+	width: 48px;
+	height: 48px;
+	border-radius: var(--radius);
+	color: var(--details-color);
+}
+.nav-toggle__bar,
+.nav-toggle__bar::before,
+.nav-toggle__bar::after {
+	position: absolute;
+	left: 12px;
+	width: 24px;
+	height: 2px;
+	background: currentColor;
+	border-radius: 2px;
+	transition: transform .35s var(--ease), opacity .2s, top .35s var(--ease);
+}
+.nav-toggle__bar { top: 23px; }
+.nav-toggle__bar::before,
+.nav-toggle__bar::after { content: ""; left: 0; }
+.nav-toggle__bar::before { top: -8px; }
+.nav-toggle__bar::after  { top: 8px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::before { top: 0; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar::after  { top: 0; transform: rotate(-45deg); }
+
+@media (max-width: 1000px) {
+	:root { --header-h: 68px; }
+
+	.nav-toggle { display: block; }
+
+	.header__panel {
+		position: fixed;
+		inset: var(--header-h) 0 0 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 2rem;
+		padding: 2rem var(--gutter);
+		overflow-y: auto;
+		background-color: var(--text-color);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-1rem);
+		transition: opacity .35s var(--ease), transform .35s var(--ease), visibility 0s linear .35s;
+	}
+	.header__panel.is-open {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+		transition-delay: 0s;
+	}
+
+	.navbar-list {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25rem;
+	}
+	.navbar-link {
+		padding: .25rem 0;
+		font-size: var(--font-sz-xl);
+		font-family: var(--font-serif);
+		text-transform: none;
+		opacity: .9;
+	}
+	.navbar-link:hover { transform: none; }
+	.navbar-link::before { bottom: -2px; height: 2px; }
+}
+
+/* FOOTER ------------------------------------------------------------------ */
+.footer {
+	position: relative;
+	padding: clamp(3rem, 6vw, 6rem) var(--gutter) 1.5rem;
+	color: var(--details-color);
+	background-color: var(--text-color);
+}
+
+.footer::before {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto 0;
+	height: 6px;
+	background: repeating-linear-gradient(45deg, var(--accent-color) 0 10px, var(--text-color) 10px 20px);
+	opacity: .7;
+}
+
+.footer-content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: clamp(2rem, 4vw, 4rem);
+	width: min(100%, var(--container));
+	margin-inline: auto;
+}
+
+.footer-title {
+	margin-bottom: 1rem;
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-l);
+	font-weight: var(--font-semibold);
+	color: var(--details-color);
+}
+
+.footer-text {
+	font-size: var(--font-sz-s);
+	opacity: .75;
+}
+
+.footer-list {
+	display: flex;
+	flex-direction: column;
+	gap: .6rem;
+	font-size: var(--font-sz-s);
+}
+
+.footer-item {
+	opacity: .85;
+}
+
+.footer-links {
+	color: var(--details-color);
+	opacity: .8;
+	border-bottom: 1px solid transparent;
+	transition: opacity var(--dur-mid) ease, border-color var(--dur-mid) ease;
+}
+.footer-links:hover {
+	opacity: 1;
+	border-bottom-color: var(--accent-color);
+}
+
+address {
+	font-style: normal;
+}
+
+.footer-map {
+	width: 100%;
+	height: 190px;
+	border: 0;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, .06);
+}
+
+.footer-bottom {
+	width: min(100%, var(--container));
+	margin: 3rem auto 0;
+	padding-top: 1.5rem;
+	border-top: 1px solid rgba(245, 232, 199, .15);
+	text-align: center;
+	font-size: var(--font-sz-s);
+	color: rgba(245, 232, 199, .75);
+}
+
+/* ACCIONES FLOTANTES (WhatsApp + volver arriba) ------------------------------ */
+.floating-actions {
+	position: fixed;
+	right: max(1rem, env(safe-area-inset-right));
+	bottom: max(1rem, env(safe-area-inset-bottom));
+	z-index: 800;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .75rem;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(100px);
+	transition: opacity .5s cubic-bezier(.22, .61, .36, 1), transform .5s cubic-bezier(.22, .61, .36, 1), visibility 0s linear .5s;
+}
+.floating-actions.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+	transition-delay: 0s;
+}
+
+.fab {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 3.5rem;
+	height: 3.5rem;
+	font-size: 1.75rem;
+	color: var(--details-color);
+	background-color: var(--text-color);
+	border-radius: 50%;
+	box-shadow: 0 .2rem 1rem rgba(44, 62, 80, .45);
+	transition: transform var(--dur-slow) cubic-bezier(.34, 1.25, .64, 1),
+	            background-color var(--dur-mid) ease,
+	            color var(--dur-mid) ease,
+	            box-shadow var(--dur-slow) ease;
+}
+
+/* Hover sereno: se eleva un poco, cambia de color y gana un halo suave */
+.fab:hover {
+	transform: translateY(-4px);
+	color: var(--text-color);
+	background-color: var(--accent-color);
+	box-shadow: 0 .6rem 1.6rem rgba(20, 30, 40, .45), 0 0 0 6px rgba(189, 155, 96, .18);
+}
+
+.fab:active {
+	transform: translateY(-1px);
+	box-shadow: 0 .2rem .8rem rgba(20, 30, 40, .4);
+}
+
+.fab svg {
+	width: 1.35rem;
+	height: 1.35rem;
+	transition: transform var(--dur-mid) cubic-bezier(.34, 1.25, .64, 1);
+}
+.fab--whatsapp svg {
+	width: 2rem;
+	height: 2rem;
+}
+.fab--top:hover svg {
+	transform: translateY(-2px);
+}
+
+.fab--whatsapp {
+	width: 4rem;
+	height: 4rem;
+	font-size: 2.25rem;
+}
+
+/* Halo que respira, lento y discreto (se detiene al pasar el cursor) */
+.fab--whatsapp::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	border: 1.5px solid var(--accent-color);
+	animation: pulse 3.6s cubic-bezier(.22, .61, .36, 1) infinite;
+	pointer-events: none;
+	transition: opacity .4s ease;
+}
+.fab--whatsapp:hover::after {
+	opacity: 0;
+	animation-play-state: paused;
+}
+
+@keyframes pulse {
+	0%   { transform: scale(1);    opacity: .55; }
+	70%  { transform: scale(1.32); opacity: 0; }
+	100% { transform: scale(1.32); opacity: 0; }
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_archivo/
+
+# Reemplaza el dominio por el real al publicar
+Sitemap: https://lebams.com/sitemap.xml

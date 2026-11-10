@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- SEO básico -->
+	<title>Lebams · Costura, arreglos y ajustes de ropa a medida</title>
+	<meta name="description" content="Lebams: más de 10 años en costura personalizada, arreglos y ajustes de pantalones, camisas, blazers, vestidos y más. Alta costura a precios accesibles. Pide tu cotización por WhatsApp.">
+	<meta name="keywords" content="costura, arreglos de ropa, ajustes de ropa, sastrería, modista, entubar pantalón, ajuste de blazer, Lebams">
+	<meta name="author" content="Lebams">
+	<meta name="robots" content="index, follow, max-image-preview:large">
+	<!-- IMPORTANTE: reemplaza lebams.com por tu dominio real al publicar -->
+	<link rel="canonical" href="https://lebams.com/">
+
+	<!-- Seguridad: política de contenido (CSP) y de referencia -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co; frame-src https://www.google.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
+	<meta name="referrer" content="strict-origin-when-cross-origin">
+
+	<!-- Open Graph / Twitter -->
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="es_VE">
+	<meta property="og:site_name" content="Lebams">
+	<meta property="og:title" content="Lebams · Diseño que cose emociones">
+	<meta property="og:description" content="Costura personalizada y arreglos de ropa con más de 10 años de experiencia. Alta costura a precios accesibles.">
+	<meta property="og:url" content="https://lebams.com/">
+	<meta property="og:image" content="https://lebams.com/assets/img/og-image.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Taller de costura de Lebams">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Lebams · Diseño que cose emociones">
+	<meta name="twitter:description" content="Costura personalizada y arreglos de ropa con más de 10 años de experiencia.">
+	<meta name="twitter:image" content="https://lebams.com/assets/img/og-image.jpg">
+
+	<!-- PWA / iconos -->
+	<meta name="theme-color" content="#2C3E50">
+	<meta name="color-scheme" content="light">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<link rel="icon" href="assets/img/icon-192.png" type="image/png" sizes="192x192">
+	<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+	<!-- Rendimiento -->
+	<!-- Imagen del hero: se precarga según el ancho de pantalla para acelerar el LCP -->
+	<link rel="preload" as="image" href="assets/img/hero.webp" media="(min-width: 701px)" fetchpriority="high">
+	<link rel="preload" as="image" href="assets/img/hero-mobile.webp" media="(max-width: 700px)" fetchpriority="high">
+	<link rel="preload" href="assets/fonts/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="preload" href="assets/fonts/Fraunces_72pt-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="stylesheet" href="assets/css/core.css">
+	<link rel="stylesheet" href="assets/css/home.css">
+	<script src="assets/js/main.js" defer></script>
+
+	<!-- Datos estructurados (schema.org) -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "LocalBusiness",
+		"@id": "https://lebams.com/#negocio",
+		"name": "Lebams",
+		"description": "Servicio de costura personalizada, arreglos y ajustes de ropa con más de 10 años de experiencia.",
+		"url": "https://lebams.com/",
+		"image": "https://lebams.com/assets/img/og-image.jpg",
+		"logo": "https://lebams.com/assets/img/icon-512.png",
+		"telephone": "+58-414-718-0941",
+		"email": "lebams@gmail.com",
+		"foundingDate": "2010",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "Santa Bárbara II, Calle 3 Av. 28, Casa #3-15",
+			"addressRegion": "Táchira",
+			"addressCountry": "VE"
+		},
+		"geo": { "@type": "GeoCoordinates", "latitude": 7.695864, "longitude": -72.370322 },
+		"hasMap": "https://www.google.com/maps/search/?api=1&query=7.695864,-72.370322",
+		"hasOfferCatalog": {
+			"@type": "OfferCatalog",
+			"name": "Servicios de costura y arreglos",
+			"itemListElement": [
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "7000",  "itemOffered": { "@type": "Service", "name": "Entubar pantalón" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "20000", "itemOffered": { "@type": "Service", "name": "Voltear cuello de camisa" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "30000", "itemOffered": { "@type": "Service", "name": "Cambio de cremallera en suéter" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "45000", "itemOffered": { "@type": "Service", "name": "Ajustar largo de manga de blazer" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "25000", "itemOffered": { "@type": "Service", "name": "Subir el hombro de chaqueta" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "25000", "itemOffered": { "@type": "Service", "name": "Ajuste de cintura en falda" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "40000", "itemOffered": { "@type": "Service", "name": "Arreglo lateral y sisa de vestido" } },
+				{ "@type": "Offer", "priceCurrency": "COP", "price": "25000", "itemOffered": { "@type": "Service", "name": "Acomodar tiro de traje de baño" } }
+			]
+		}
+	}
+	</script>
+</head>
+<body>
+	<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+	<!-- Iconos SVG en línea (sin librerías externas) -->
+	<svg xmlns="http://www.w3.org/2000/svg" class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+		<symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+		<symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+		<symbol id="i-form" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h8"/></g></symbol>
+		<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+		<symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+		<symbol id="i-medal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14.5-1.5 7.5 5-3 5 3-1.5-7.5"/></g></symbol>
+		<symbol id="i-ruler" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0l-4.6-4.6a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4z"/><path d="m7.5 10.5 2 2M10.5 7.5l2 2M13.5 4.5l2 2M4.5 13.5l2 2"/></g></symbol>
+		<symbol id="i-scissors" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></g></symbol>
+	</svg>
+
+	<!-- BARRA DE NAVEGACIÓN -->
+	<header class="header" id="header">
+		<a href="#home" class="logo" aria-label="Lebams, ir al inicio">Lebams</a>
+
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+			<span class="nav-toggle__bar"></span>
+		</button>
+
+		<div class="header__panel" id="primary-nav">
+			<nav class="navbar-list" aria-label="Navegación principal">
+				<a href="#home" class="navbar-link">Inicio</a>
+				<a href="#about" class="navbar-link">Sobre nosotros</a>
+				<a href="#services" class="navbar-link">Servicios</a>
+				<a href="#process" class="navbar-link">Proceso</a>
+				<a href="#contact" class="navbar-link">Contacto</a>
+			</nav>
+		</div>
+	</header>
+
+
+
+	<main id="main">
+
+		<!-- SECCIÓN DE INICIO -->
+		<section class="hero" id="home" aria-labelledby="home-title">
+			<picture class="hero__media">
+				<source media="(max-width: 700px)" srcset="assets/img/hero-mobile.webp">
+				<img src="assets/img/hero.webp" alt="" width="1920" height="1095" fetchpriority="high" decoding="async">
+			</picture>
+			<div class="hero__content">
+				<p class="hero__eyebrow">Costura · Arreglos · A medida</p>
+				<h1 class="hero__title" id="home-title">Diseño que cose emociones</h1>
+				<p class="hero__text">Servicios de costura personalizados para marcas que buscan elegancia atemporal. Más de 10 años ofreciendo servicios de alta costura a precios accesibles.</p>
+				<div class="hero__actions">
+					<a class="btn btn--light" href="#services">Ver Servicios</a>
+					<a class="btn btn--ghost" href="https://wa.me/584147180941" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>Cotizar por WhatsApp</a>
+				</div>
+			</div>
+			<a class="hero__scroll" href="#about" aria-label="Ir a la siguiente sección"><svg aria-hidden="true"><use href="#i-chevron-down"/></svg></a>
+		</section>
+
+		<!-- SOBRE NOSOTROS -->
+		<section class="section about" id="about" aria-labelledby="about-title">
+			<div class="container">
+				<h2 class="subtitle" id="about-title">Sobre Nosotros</h2>
+				<p class="section-lead">Somos una empresa de costura con experiencia en la industria de la moda. Nuestra misión es brindar servicios de alta calidad y personalizados para satisfacer las necesidades de nuestros clientes.</p>
+				<div class="about__grid">
+					<article class="about-card">
+						<div class="about-card__icon"><svg aria-hidden="true"><use href="#i-medal"/></svg></div>
+						<h3 class="about-card__title">Experiencia</h3>
+						<p>Más de 10 años transformando prendas con pasión y precisión. Conocemos cada tela, cada costura y cada detalle que hace que una prenda te quede perfecta.</p>
+					</article>
+					<article class="about-card">
+						<div class="about-card__icon"><svg aria-hidden="true"><use href="#i-ruler"/></svg></div>
+						<h3 class="about-card__title">Hecho a tu medida</h3>
+						<p>Nos especializamos en la confección y el ajuste de prendas de vestir, desde ropa de trabajo hasta prendas de ocio, siempre pensando en tu comodidad.</p>
+					</article>
+					<article class="about-card">
+						<div class="about-card__icon"><svg aria-hidden="true"><use href="#i-scissors"/></svg></div>
+						<h3 class="about-card__title">Acabado profesional</h3>
+						<p>Cada prenda recibe atención personalizada con terminados que prolongan su vida útil, para que vuelvas a lucir tu ropa favorita como el primer día.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECCIÓN DE SERVICIOS -->
+		<section class="section services" id="services" aria-labelledby="services-title">
+			<div class="container">
+				<h2 class="subtitle" id="services-title">Nuestros servicios</h2>
+				<p class="section-lead">Dale una segunda vida a tus prendas favoritas con nuestros servicios profesionales de confección y arreglos. <strong>Más de 10 años</strong> ofreciendo servicios de alta costura a precios accesibles.</p>
+				<p class="section-lead">Cada prenda recibe atención personalizada con terminados profesionales que prolongan su vida útil.</p>
+
+				<div class="services__list">
+					<ul class="services__grid">
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/pantalon.webp" alt="Pantalón negro sobre fondo claro" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Pantalones</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Entubar pantalón</p>
+										<p class="card__desc">Ajuste profesional para modernizar tus pantalones y mejorar su caída.</p>
+										<p class="card__price"><data value="7000">7.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="entubar un pantalón" data-wa-emoji="👖" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre entubar pantalón (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/camisa.webp" alt="Camisa negra de algodón" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Camisas</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Voltear cuello</p>
+										<p class="card__desc">Renovación del cuello para devolverle su aspecto original.</p>
+										<p class="card__price"><data value="20000">20.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="voltear el cuello de una camisa" data-wa-emoji="👔" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre voltear cuello (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/sueter.webp" alt="Suéter de tejido grueso" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Suéteres</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Cambio de cremallera</p>
+										<p class="card__desc">Renovación del cierre/cremallera para devolverle su aspecto original.</p>
+										<p class="card__price"><data value="30000">30.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="cambiar el cierre/cremallera de una prenda" data-wa-emoji="🧥" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre cambio de cremallera (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/blazers.webp" alt="Blazer de vestir" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Blazers</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Ajustar el largo de manga</p>
+										<p class="card__desc">Precisión milimétrica para un acabado perfecto.</p>
+										<p class="card__price"><data value="45000">45.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="ajustar el largo de manga de un blazer" data-wa-emoji="🧥" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre ajustar el largo de manga (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/chaqueta.webp" alt="Chaqueta casual" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Chaquetas</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Subir el hombro</p>
+										<p class="card__desc">Corrección de caída para mejor ajuste.</p>
+										<p class="card__price"><data value="25000">25.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="subir el hombro de una chaqueta" data-wa-emoji="🧥" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre subir el hombro (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/falda.webp" alt="Falda negra con pliegues" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Faldas</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Ajuste de cintura</p>
+										<p class="card__desc">Personalizado para tu comodidad.</p>
+										<p class="card__price"><data value="25000">25.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="ajustar la medida de una falda en la cintura" data-wa-emoji="👗" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre ajuste de cintura (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/vestido.webp" alt="Vestido elegante" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Vestidos</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Arreglo lateral y sisa</p>
+										<p class="card__desc">Ajuste preciso en los costados.</p>
+										<p class="card__price"><data value="40000">40.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="ajustar el lateral y la sisa de un vestido" data-wa-emoji="👗" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre arreglo lateral y sisa (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li>
+							<article class="card">
+								<div class="card__inner">
+									<div class="card__face card__front">
+										<img src="assets/img/traje-bano.webp" alt="Traje de baño" width="500" height="600" loading="lazy" decoding="async">
+										<span class="card__hint" aria-hidden="true">Ver detalle</span>
+										<h3 class="card__title">Trajes de baño</h3>
+									</div>
+									<div class="card__face card__back">
+										<p class="card__service">Acomodar tiro</p>
+										<p class="card__desc">Para mayor comodidad y ajuste perfecto.</p>
+										<p class="card__price"><data value="25000">25.000 COP</data></p>
+										<a class="card__btn" href="https://wa.me/584147180941" data-wa="acomodar el tiro de un traje de baño" data-wa-emoji="👙" target="_blank" rel="noopener noreferrer">Saber más<span class="sr-only"> sobre acomodar tiro (WhatsApp)</span></a>
+									</div>
+								</div>
+							</article>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- PROCESO -->
+		<section class="section process" id="process" aria-labelledby="process-title">
+			<div class="container">
+				<h2 class="subtitle" id="process-title">Cómo trabajamos</h2>
+				<p class="section-lead">Un proceso simple y cercano para que tu prenda quede exactamente como la imaginas.</p>
+				<ol class="process__steps">
+					<li class="process__step">
+						<h3>Cuéntanos tu idea</h3>
+						<p>Escríbenos por WhatsApp o por el formulario y describe el arreglo o la prenda que necesitas.</p>
+					</li>
+					<li class="process__step">
+						<h3>Revisamos y cotizamos</h3>
+						<p>Evaluamos la prenda y te confirmamos el precio y la disponibilidad.</p>
+					</li>
+					<li class="process__step">
+						<h3>Ajustamos con precisión</h3>
+						<p>Trabajamos a mano y a máquina, cuidando cada costura y el material de tu prenda.</p>
+					</li>
+					<li class="process__step">
+						<h3>Recibe y luce</h3>
+						<p>Pruébate tu prenda lista y disfrútala como nueva.</p>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<!-- PREGUNTAS FRECUENTES -->
+		<section class="section faq" id="faq" aria-labelledby="faq-title">
+			<div class="container">
+				<h2 class="subtitle" id="faq-title">Preguntas frecuentes</h2>
+				<div class="faq__list">
+					<details class="faq__item">
+						<summary>¿Cómo puedo pedir una cotización?</summary>
+						<p>Escríbenos por WhatsApp desde cualquier botón “Saber más” de los servicios, o usa nuestro formulario de contacto. Te responderemos con la disponibilidad y el precio.</p>
+					</details>
+					<details class="faq__item">
+						<summary>¿Los precios son fijos?</summary>
+						<p>Los valores publicados son de referencia para cada servicio. El precio final puede variar según el tipo de tela y la complejidad del arreglo; lo confirmamos antes de empezar.</p>
+					</details>
+					<details class="faq__item">
+						<summary>¿Qué tipo de prendas arreglan?</summary>
+						<p>Trabajamos con pantalones, camisas, suéteres, blazers, chaquetas, faldas, vestidos y trajes de baño. Si tu prenda no está en la lista, consúltanos.</p>
+					</details>
+					<details class="faq__item">
+						<summary>¿Dónde están ubicados?</summary>
+						<p>Estamos en Santa Bárbara II, Calle 3 Av. 28, Casa #3-15. Puedes ver el mapa al final de la página.</p>
+					</details>
+				</div>
+			</div>
+		</section>
+
+		<!-- CONTACTO -->
+		<section class="section contact-cta" id="contact" aria-labelledby="contact-title">
+			<div class="container">
+				<h2 class="subtitle" id="contact-title">Contáctanos</h2>
+				<p class="section-lead">Para conocer más sobre nuestros servicios, no dudes en <a href="form-contact.html">contactarnos</a>. También puedes escribirnos por WhatsApp o a nuestro correo electrónico.</p>
+				<div class="contact-cta__actions">
+					<a class="btn btn--outline" href="https://wa.me/584147180941" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+					<a class="btn btn--outline" href="mailto:lebams@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Correo</a>
+					<a class="btn btn--outline" href="form-contact.html"><svg class="icon" aria-hidden="true"><use href="#i-form"/></svg>Formulario</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- FOOTER -->
+	<footer class="footer" id="sectionFooter">
+		<div class="footer-content">
+			<div class="footer-column">
+				<h2 class="footer-title">Lebams</h2>
+				<p class="footer-text">Transformamos tus prendas con pasión y precisión desde 2010.</p>
+			</div>
+
+			<nav class="footer-column" aria-label="Servicios">
+				<h2 class="footer-title">Servicios</h2>
+				<ul class="footer-list">
+					<li class="footer-item"><a class="footer-links" href="#services">Ajuste de pantalones</a></li>
+					<li class="footer-item"><a class="footer-links" href="#services">Arreglo de camisas</a></li>
+					<li class="footer-item"><a class="footer-links" href="#services">Transformación de blazers</a></li>
+					<li class="footer-item"><a class="footer-links" href="#services">Todo nuestro portafolio</a></li>
+				</ul>
+			</nav>
+
+			<div class="footer-column">
+				<h2 class="footer-title">Contacto</h2>
+				<address>
+					<ul class="footer-list">
+						<li class="footer-item">Tel: <a class="footer-links" href="tel:+584147180941">+58 414 718 0941</a></li>
+						<li class="footer-item">Correo: <a class="footer-links" href="mailto:lebams@gmail.com">lebams@gmail.com</a></li>
+						<li class="footer-item">Tel fijo: <a class="footer-links" href="tel:+582767622222">0276 76 22 22</a></li>
+						<li class="footer-item">Dirección: <a class="footer-links" href="https://www.google.com/maps/search/?api=1&amp;query=7.695864,-72.370322" target="_blank" rel="noopener noreferrer">Santa Bárbara II, Calle 3 Av. 28, Casa #3-15.</a></li>
+					</ul>
+				</address>
+			</div>
+
+			<div class="footer-column">
+				<h2 class="footer-title">Ubicación</h2>
+				<iframe class="footer-map" title="Mapa de la ubicación de Lebams" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d349.47705278203824!2d-72.37032156379018!3d7.695864265994532!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e663f007bbf1503%3A0x138c44720baa619f!2sFlia%20Avellaneda%20Gonzalez!5e0!3m2!1ses-419!2sve!4v1751856468449!5m2!1ses-419!2sve" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin"></iframe>
+			</div>
+		</div>
+
+		<p class="footer-bottom">&copy; <span data-year>2026</span> Lebams. Todos los derechos reservados.</p>
+	</footer>
+
+	<!-- Acciones flotantes -->
+	<div class="floating-actions" id="floatingBtn">
+		<a class="fab fab--top" href="#home" aria-label="Volver arriba"><svg aria-hidden="true" class="icon"><use href="#i-arrow-up"/></svg></a>
+		<a class="fab fab--whatsapp" href="https://wa.me/584147180941" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+	</div>
+
+	<noscript>
+		<p class="noscript-note">Algunas funciones, como el menú móvil, necesitan JavaScript.</p>
+	</noscript>
+</body>
+</html>

@@ -1,0 +1,489 @@
+/* ==========================================================================
+   HOME · hero, sobre nosotros, servicios, proceso, FAQ y contacto
+   ========================================================================== */
+
+.section {
+	padding: var(--space-section) var(--gutter);
+}
+
+/* HERO -------------------------------------------------------------------- */
+.hero {
+	position: relative;
+	display: grid;
+	place-items: center;
+	min-height: min(calc(100vh - var(--header-h)), 56rem);
+	min-height: min(calc(100svh - var(--header-h)), 56rem);
+	padding: 4rem var(--gutter) 6rem;
+	text-align: center;
+	isolation: isolate;
+	overflow: hidden;
+	background-color: var(--text-color);
+}
+
+.hero__media,
+.hero__media img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+	z-index: -2;
+}
+
+.hero__media img {
+	transform: scale(1.04);
+	animation: hero-zoom 22s var(--ease-soft) forwards;
+}
+
+.hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: linear-gradient(180deg, rgba(20, 30, 40, .55) 0%, rgba(20, 30, 40, .65) 60%, rgba(236, 240, 241, 0) 100%),
+	            rgba(0, 0, 0, .15);
+}
+
+@keyframes hero-zoom {
+	to { transform: scale(1); }
+}
+
+.hero__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 760px;
+}
+
+/* Entrada del hero: aparecer con un desenfoque que se disuelve y un
+   desplazamiento mínimo. Escalonado corto (90 ms) para que fluya, no para
+   que parezca que cada bloque espera su turno. */
+.hero__eyebrow {
+	margin-bottom: 1rem;
+	font-size: var(--font-sz-s);
+	font-weight: var(--font-semibold);
+	letter-spacing: .25em;
+	text-transform: uppercase;
+	color: var(--accent-color);
+	animation: soft-in .8s var(--ease-soft) both;
+}
+
+.hero__title {
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-xxxl);
+	font-weight: var(--font-semibold);
+	color: var(--details-color);
+	text-shadow: 0 4px 18px rgba(0, 0, 0, .55);
+	animation: soft-in .95s .1s var(--ease-soft) both;
+}
+
+.hero__text {
+	max-width: 62ch;
+	margin: 1.5rem 0 2.5rem;
+	font-size: clamp(1rem, .95rem + .3vw, 1.15rem);
+	line-height: 1.6;
+	color: var(--main-color);
+	text-shadow: 0 2px 10px rgba(0, 0, 0, .55);
+	animation: soft-in .9s .2s var(--ease-soft) both;
+}
+
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	animation: soft-in .85s .3s var(--ease-soft) both;
+}
+
+.hero .btn--ghost {
+	color: var(--main-color);
+	background: transparent;
+	border-color: rgba(255, 255, 255, .7);
+}
+.hero .btn--ghost:hover {
+	color: var(--text-color);
+	background: var(--details-color);
+	border-color: var(--details-color);
+}
+
+.hero__scroll {
+	position: absolute;
+	bottom: 1.5rem;
+	left: 50%;
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	color: var(--details-color);
+	border: 1px solid rgba(245, 232, 199, .45);
+	border-radius: 50%;
+	transform: translateX(-50%);
+	transition: background-color .35s ease, border-color .35s ease;
+	animation: breathe 3.4s ease-in-out infinite;
+}
+.hero__scroll svg {
+	width: 1rem;
+	height: 1rem;
+	transition: transform .4s var(--ease-soft);
+}
+.hero__scroll:hover {
+	background-color: rgba(245, 232, 199, .12);
+	border-color: var(--details-color);
+}
+.hero__scroll:hover svg {
+	transform: translateY(3px);
+}
+
+/* Latido discreto en lugar de un rebote mecánico */
+@keyframes breathe {
+	0%, 100% { transform: translate(-50%, 0);    opacity: .75; }
+	50%      { transform: translate(-50%, 4px);  opacity: 1; }
+}
+
+/* SOBRE NOSOTROS ------------------------------------------------------------ */
+.about__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.about-card {
+	padding: 2rem;
+	color: var(--text-color);
+	background-color: var(--details-color);
+	border: 1px solid var(--text-color);
+	border-radius: 1rem;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
+	transition: transform var(--dur-mid) var(--ease-soft), box-shadow var(--dur-mid) var(--ease-soft);
+}
+.about-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .25);
+}
+
+.about-card__icon {
+	display: grid;
+	place-items: center;
+	width: 3rem;
+	height: 3rem;
+	margin-bottom: 1rem;
+	color: var(--details-color);
+	background: var(--text-color);
+	border-radius: 50%;
+}
+.about-card__icon svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.about-card__title {
+	margin-bottom: .75rem;
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-xl);
+	font-weight: var(--font-semibold);
+}
+
+/* SERVICIOS ------------------------------------------------------------------- */
+.services {
+	text-align: center;
+}
+
+.services__list {
+	margin-top: 3rem;
+	padding: clamp(1rem, 3vw, 2rem);
+	background-color: rgba(44, 62, 80, .12);
+	border-radius: 10px;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .2);
+}
+
+@supports (backdrop-filter: blur(5px)) {
+	.services__list { backdrop-filter: blur(5px); }
+}
+
+.services__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+	gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+/* En pantallas pequeñas: dos columnas compactas en lugar de una */
+@media (max-width: 620px) {
+	.services__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: .9rem;
+	}
+	.card__title { font-size: var(--font-sz-m); }
+	.card__hint { top: .5rem; right: .5rem; padding: .2rem .5rem; }
+}
+
+/* Giro 3D de las tarjetas: misma técnica, tiempos y curva que el diseño
+   original del video (perspectiva por cara y giro de 0° a 360° del reverso) */
+.card {
+	position: relative;
+	aspect-ratio: 5 / 6;
+	outline-offset: 6px;
+}
+
+.card__inner {
+	position: absolute;
+	inset: 0;
+}
+
+.card__face {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	border-radius: 10px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	transition: .5s cubic-bezier(.445, .05, .55, .95);
+}
+
+.card__front {
+	transform: perspective(600px) rotateY(0deg);
+	box-shadow: 0 .5rem 1rem rgba(44, 62, 80, .35);
+}
+
+.card__front img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform .5s cubic-bezier(.445, .05, .55, .95);
+}
+
+.card__title {
+	position: absolute;
+	inset: auto 0 0 0;
+	padding: .75rem;
+	font-size: var(--font-sz-l);
+	font-weight: var(--font-semibold);
+	color: var(--text-color);
+	background-color: var(--bg-color);
+}
+
+.card__hint {
+	position: absolute;
+	top: .75rem;
+	right: .75rem;
+	padding: .3rem .7rem;
+	font-size: var(--font-sz-xs);
+	font-weight: var(--font-semibold);
+	color: var(--details-color);
+	background: rgba(44, 62, 80, .85);
+	border-radius: 2rem;
+}
+
+.card__back {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: .75rem;
+	padding: 1.5rem;
+	text-align: center;
+	color: var(--details-color);
+	background-color: var(--text-color);
+	box-shadow: 0 .5rem 1rem rgba(44, 62, 80, .85);
+	transform: perspective(600px) rotateY(180deg);
+}
+
+.card__service {
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-l);
+	font-weight: var(--font-semibold);
+	letter-spacing: .03em;
+}
+
+.card__desc {
+	max-width: 200px;
+	font-size: var(--font-sz-s);
+	font-weight: var(--font-light);
+	letter-spacing: .03em;
+	line-height: 1.5;
+	color: var(--bg-color);
+}
+
+.card__price {
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-l);
+	font-weight: var(--font-semibold);
+}
+
+.card__btn {
+	min-height: 44px;
+	padding: .7rem 1.6rem;
+	font-size: var(--font-sz-s);
+	font-weight: var(--font-semibold);
+	color: var(--text-color);
+	background-color: var(--bg-color);
+	border: 1px solid var(--bg-color);
+	border-radius: 14px 2px 14px 2px;
+	transition: background-color var(--dur-mid) ease, color var(--dur-mid) ease, box-shadow var(--dur-mid) ease;
+}
+.card__btn:hover {
+	color: var(--bg-color);
+	background-color: transparent;
+	outline: 1px solid var(--bg-color);
+	outline-offset: 2px;
+	box-shadow: 0 0 3rem rgba(245, 232, 199, .55);
+}
+
+/* Giro por teclado y por toque */
+.card:focus-within .card__front,
+.card.is-flipped .card__front { transform: perspective(600px) rotateY(180deg); }
+.card:focus-within .card__back,
+.card.is-flipped .card__back { transform: perspective(600px) rotateY(360deg); }
+
+/* Giro con el cursor, como en el video original */
+@media (hover: hover) and (pointer: fine) {
+	.card:hover .card__front { transform: perspective(600px) rotateY(180deg); }
+	.card:hover .card__back { transform: perspective(600px) rotateY(360deg); }
+}
+
+/* Sin giro 3D si el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+	.card__face { transition: none; }
+}
+
+/* PROCESO ------------------------------------------------------------------------ */
+.process {
+	color: var(--details-color);
+	background-color: var(--text-color);
+}
+.process .subtitle {
+	color: var(--details-color);
+	text-shadow: 0 2px 10px rgba(255, 255, 255, .25);
+}
+
+.process__steps {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 2rem;
+	counter-reset: step;
+	margin-top: 3rem;
+}
+
+.process__step {
+	position: relative;
+	padding: 2.5rem 1.5rem 1.5rem;
+	text-align: center;
+	background: rgba(245, 232, 199, .06);
+	border: 1px solid rgba(245, 232, 199, .18);
+	border-radius: 1rem;
+	counter-increment: step;
+	transition: transform var(--dur-mid) var(--ease-soft), border-color var(--dur-mid) ease;
+}
+.process__step:hover {
+	transform: translateY(-6px);
+	border-color: var(--accent-color);
+}
+.process__step::before {
+	content: counter(step);
+	position: absolute;
+	top: -1.4rem;
+	left: 50%;
+	display: grid;
+	place-items: center;
+	width: 2.8rem;
+	height: 2.8rem;
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-xl);
+	font-weight: var(--font-bold);
+	color: var(--text-color);
+	background: var(--accent-color);
+	border-radius: 50%;
+	transform: translateX(-50%);
+}
+.process__step h3 {
+	margin-bottom: .5rem;
+	font-family: var(--font-serif);
+	font-size: var(--font-sz-l);
+	font-weight: var(--font-semibold);
+}
+.process__step p {
+	font-size: var(--font-sz-s);
+	opacity: .85;
+}
+
+/* FAQ ------------------------------------------------------------------------------ */
+.faq__list {
+	display: grid;
+	gap: 1rem;
+	max-width: 800px;
+	margin: 2rem auto 0;
+}
+
+.faq__item {
+	background: var(--main-color);
+	border: 1px solid rgba(44, 62, 80, .25);
+	border-radius: var(--radius);
+	overflow: hidden;
+	transition: box-shadow var(--dur-mid) ease;
+}
+.faq__item[open] {
+	box-shadow: var(--shadow-soft);
+	border-color: var(--accent-color);
+}
+
+.faq__item summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.1rem 1.5rem;
+	font-weight: var(--font-semibold);
+	cursor: pointer;
+	list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+	content: "+";
+	flex: none;
+	font-size: var(--font-sz-xl);
+	line-height: 1;
+	color: var(--accent-dark);
+	transition: transform var(--dur-mid) var(--ease-soft);
+}
+.faq__item[open] summary::after { transform: rotate(45deg); }
+
+.faq__item p {
+	padding: 0 1.5rem 1.25rem;
+	animation: soft-in .5s var(--ease-soft) both;
+}
+
+/* CONTACTO (CTA) -------------------------------------------------------------------- */
+.contact-cta {
+	text-align: center;
+}
+.contact-cta .section-lead a {
+	color: var(--danger-dark);
+	font-weight: var(--font-semibold);
+	text-decoration: underline !important;
+	text-underline-offset: 3px;
+}
+.contact-cta .section-lead a:hover {
+	color: var(--accent-dark);
+}
+
+.contact-cta__actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.25rem;
+	margin-top: 2rem;
+}
+.contact-cta__actions .btn {
+	min-width: 180px;
+}
+
+/* RESPONSIVE ------------------------------------------------------------------------ */
+@media (max-width: 600px) {
+	.hero__eyebrow {
+		font-size: var(--font-sz-xs);
+		letter-spacing: .18em;
+	}
+	.hero__actions .btn,
+	.contact-cta__actions .btn {
+		width: 100%;
+	}
+	.subtitle { word-spacing: .25rem; }
+}
